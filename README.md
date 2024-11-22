@@ -6,7 +6,7 @@
 
     0. Prerequisites
 
-        Matplotlib
+        **Matplotlib**
     
     1. Install Korean Fonts (Nanum)
 
