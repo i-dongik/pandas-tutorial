@@ -34,7 +34,8 @@
 
         You need to copy the Nanum fonts to Matplotlib's font directory so that it can be used for rendering Korean text.
         ```
-        cd /home/[user]/miniconda3/lib/python3.10/site-packages/matplotlib/mpl-data/fonts/ttf
+        under '/home/[user]/miniconda3/envs/[name]/lib/[python version]'
+        cd ./site-packages/matplotlib/mpl-data/fonts/ttf
         ```
         Then, list the available Nanum fonts:
         ```
@@ -53,3 +54,23 @@
         ```
         This removes the old cache files, and Matplotlib will regenerate the font cache the next time it runs.
 
+    6. (KOR) 또 다른 방법
+
+        또 다른 방법은 matplotlib에서 한글 폰트의 경로를 명시적으로 지정해주는 방법. NanumGothic을 사용할 수 있도록 폰트 경로를 지정하는 방법을 설명해요. (시도는 안했는데, 간단해서 작동했으면 해요)
+        ```
+        import matplotlib.pyplot as plt
+        from matplotlib import rcParams
+        import matplotlib.font_manager as fm
+
+        # NanumGothic 폰트 경로를 확인하고 설정합니다.
+        font_path = "/usr/share/fonts/truetype/nanum/NanumGothic.ttf"
+        font_prop = fm.FontProperties(fname=font_path)
+
+        # 폰트 설정
+        rcParams['font.family'] = font_prop.get_name()
+
+        # 예시 그래프
+        plt.plot([1, 2, 3, 4], [1, 4, 9, 16])
+        plt.title("한글 포함된 예시 그래프")
+        plt.show()
+        ```
